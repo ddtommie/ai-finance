@@ -1,20 +1,37 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-<p>This page is to welcome you</p>
-<table>
-    <tr>
-        <td>Cell 1</td>
-        <td>Cell 2</td>
-        <td>Cell 3</td>
-    </tr>
-    <tr>
-        <td>Cell 4</td>
-        <td>Cell 5</td>
-        <td>Cell 6</td>
-    </tr>
-    <tr>
-        <td>Cell 7</td>
-        <td>Cell 8</td>
-        <td>Cell 9</td>
-    </tr>
-</table>
+<script>
+    import { useChat } from 'ai/svelte';
+     
+    const { input, handleSubmit, messages } = useChat();
+    </script>
+     
+    <svelte:head>
+        <title>Home</title>
+        <meta name="description" content="Svelte demo app" />
+    </svelte:head>
+     
+    <section>
+        <h1>useChat</h1>
+        <ul>
+            {#each $messages as message}
+                <li>{message.role}: {message.content}</li>
+            {/each}
+        </ul>
+        <form on:submit={handleSubmit}>
+            <input bind:value={$input} />
+            <button type="submit">Send</button>
+        </form>
+    </section>
+     
+    <style>
+    section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 0.6;
+    }
+     
+    h1 {
+      width: 100%;
+    }
+    </style>
