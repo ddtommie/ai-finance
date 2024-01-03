@@ -10,7 +10,7 @@
     </svelte:head>
      
     <section>
-        <h1>Random chat with GPT</h1>
+        <h1><a href="/">🔙</a> Random chat with GPT</h1>
         <ul>
             {#each $messages as message}
                 <li>{message.role}: {message.content}</li>
