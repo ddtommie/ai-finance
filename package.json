@@ -21,6 +21,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@vercel/analytics": "^1.1.1",
 		"ai": "^2.2.30",
 		"openai": "^4.24.1",
 		"svelte-markdown": "^0.4.1"

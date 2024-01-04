@@ -1,11 +1,13 @@
 body {
-    font-family: 'Open Sans', serif;
+    font-family: 'Open Sans', sans-serif;
+    padding: 1em;
 }
 
 .flex-container {
     display: flex;
     flex-direction: row;
     justify-content: left;
+    gap: 1em;
 }
 
 section {
@@ -20,9 +22,9 @@ table {
     border-collapse: collapse;
     border-spacing: 0px;
     border: 1px solid #ddd;
-    table-layout: fixed;
     text-align: left;
     font-size: 1em;
+    width: 100%;
 }
 
 .small table {
@@ -42,15 +44,25 @@ button {
     padding: .8em 1.6em;
     font-size: 1em;
     font-weight: 900;
-    margin: 1em 1em 0 0;
+    margin: 1em 0;
+    flex: 1;
+    gap: 1em;
 }
 
 h1 {
-    font-weight: 900;
-    font-size: 2em;
+    font-weight: 700;
+    font-size: 1.7em;
 }
 
 h1 a {
     text-decoration: none;
     margin-right: 8px;
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    body {
+    margin-left: 20%;
+    margin-right: 20%;
+    }
 }

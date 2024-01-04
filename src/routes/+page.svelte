@@ -1,7 +1,5 @@
 <h1>Hello welcome to my AI playground!</h1>
 
-<h2>Experiments</h2>
-
 <table>
     <tr>
         <th>Date</th>

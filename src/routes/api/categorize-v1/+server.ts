@@ -14,45 +14,53 @@ export const POST = (async ({ request }) => {
   // Request the OpenAI API for the response based on the prompt
   const response = await openai.chat.completions.create({
     //model: 'gpt-4',
-    model: 'gpt-3.5-turbo-1106',
+    model: 'gpt-4-1106-preview',
+    //model: 'gpt-3.5-turbo-1106',
+    //model: 'gpt-3.5-turbo-0613',
     stream: true,
     // a precise prompt is important for the AI to reply with the correct tokens
     messages: [
       {
         role: 'user',
         content: `Can you categorize these payment transactions only to one of the listed categories
-        and make a table out of it with the columns "summary of 1 or 2 words", "category", "short explanation
-        why you picked this using a reference from the payment"? If you can, rather pick a category than chosing "other"
+        and make a table out of it with the columns titled:
+        "Summary" (a summary of the transaction in 1 or 2 words, most often this is the merchant name. Try to use normal sentence casing, remove things like BV or NV from merchant names),
+        "Category" (the category you picked), 
+        "Explanation" (a short explanation why you picked this using a reference from the payment?) 
+        
+        Additional requirements:
+        - If you can, rather pick a category than chosing the category "other"
+        - Don't add text above or below the table.
 
-        The categories (in dutch) are:
-        Wonen (this is about your house, mortgage, rent)
-        Boodschappen (this is only related to shopping for food)
-        Eten (this can be eating out, takeaway, or lunch/coffee)
+        The categories are:
+        Living (this is about your house, mortgage, rent)
+        Groceries (this is only related to shopping for food)
+        Food (this can be eating out, takeaway, or lunch/coffee)
         Online shopping (for big online retailers where you can buy multiple types of things like books, washing machines, toys and we don't know what specific thing you bought)
-        Internet TV en telefoon (this is what it says it is)
-        Vervoer (this can be parking, public transit, bike, car, petrol etc.)
-        School en studie (this is clear)
-        Gezin (this can be stuff for your kids, daycare, family related taxes)
-        Huisdier (this is obvious)
-        Hobby en vrije tijd (this can be theatre,concerts but subscriptions also go in this category)
-        Sport (pretty obvious)
-        Inkomsten (salary, but no refunds for cloths for instance, they go with clothing category)
-        Leningen
-        Bankkosten
-        Belasting
-        Verzekeringen
-        Kleding
-        Verzorging (can be stores where you buy health and care items)
-        Zorg en gezondheid (can be health insurance, or health related costs like hospital, dentist, doctor)
-        Cadeaus
-        Goede doelen
-        Vakantie
-        Uitgaan (can be bars, disco's and the likes)
-        Interne overboekingen (payments to your own accounts)
-        Overig (if you really really have no clue at all)
-        Loterij
+        Internet, TV and phone 
+        Transport (this can be parking, public transit, bike, car, petrol etc.)
+        School & study
+        Family (this can be stuff for your kids, daycare, family related taxes)
+        Pets
+        Hobby & leisure (this can be theatre,concerts but subscriptions also go in this category)
+        Sports
+        Income (salary, but no refunds for cloths for instance, they go with clothing category)
+        Loans
+        Savings and investments (this can be stocks, crypto, but also transfers to and from savings accounts)
+        Taxes
+        Insurances
+        Clothes
+        Personal care (can be stores where you buy health and care items)
+        Health (can be health insurance, or health related costs like hospital, dentist, doctor)
+        Presents
+        Charities
+        Holiday (this can be hotels, flights, car rental, but also souvenirs)
+        Going out (can be bars, disco's and the likes)
+        Other (if you really really have no clue at all)
+        Lottery
         Credit Card
-        Betaalverzoek (for payment requests or tikkies)
+        Payment requests (for payment requests or tikkies)
+
 
         Transactions: 
         ${prompt}`
@@ -60,10 +68,10 @@ export const POST = (async ({ request }) => {
     ],
     //response_format: { type: "json_object" },
     max_tokens: 2000,
-    temperature: 0.1, // kinda certain
+    temperature: 0.5, // kinda certain
     top_p: 1,
-    frequency_penalty: 1,
-    presence_penalty: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0,
   });
 
 

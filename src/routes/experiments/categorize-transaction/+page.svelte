@@ -1,7 +1,7 @@
 <script>
     import { useCompletion } from 'ai/svelte'
     import SvelteMarkdown from 'svelte-markdown'
-    const { input, handleSubmit, completion } = useCompletion({
+    const { input, handleSubmit, completion, isLoading } = useCompletion({
     api: '/api/categorize-v1',
   });
 
@@ -60,10 +60,12 @@ $input = combineRandomStrings();
 
 <p>These are 3 random transactions (you can paste your own)</p>
 <form on:submit={handleSubmit}>
-    <textarea bind:value={$input} rows="5" cols="50" />
-
     <div class="flex-container">
-        <button type="submit">Categorize them! 😎</button>
+        <textarea bind:value={$input} rows="5" style="flex: 1" />
+    </div>
+    <div class="flex-container">
+        <button disabled='{$isLoading}' type="submit">{#if ($isLoading)}Wait! I'm working 😅{:else}Categorize them! 😎{/if}</button>
         <button type="button" on:click={() => $input = combineRandomStrings()}>Gimme 3 new ones! 🔁</button>
     </div>
 </form>
+
