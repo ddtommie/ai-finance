@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>Hello welcome to my AI playground!</title> 
+</svelte:head>
+
 <h1>Hello welcome to my AI playground!</h1>
 
 <table>
