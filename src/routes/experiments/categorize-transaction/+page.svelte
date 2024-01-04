@@ -49,6 +49,8 @@ function combineRandomStrings() {
 
 $input = combineRandomStrings();
 
+import logo from '$lib/categorizing.jpg';
+
 </script>
 
 <svelte:head>
@@ -56,8 +58,11 @@ $input = combineRandomStrings();
   <meta property="og:title" content="Categorize transaction(s)" />
   <meta property="og:description" content="Input some transactions and let OpenAI categorize them " />
   <meta property="og:url" content="https://ai.ontwerpkracht.nl/experiments/categorize-transaction" />
-  <meta property="og:image" content="%sveltekit.assets%/categorizing.jpg" />
-  <meta property="og:type" content="website" />
+  <meta property="og:image" content="{logo}" />
+  <meta property="og:image:width" content="1000" />
+	<meta property="og:image:height" content="1000" />
+	<meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:type" content="article" />
 </svelte:head>
 
 <h1><a href="/">🔙</a> Categorize transaction(s)</h1>
