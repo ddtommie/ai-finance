@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600;900;&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600;900&display=swap">
 </svelte:head>
 
 
