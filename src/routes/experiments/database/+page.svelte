@@ -1,19 +1,35 @@
 <script>
-    import PocketBase from 'pocketbase';
+	export let data;
+  
+  import { invalidateAll } from '$app/navigation';
+  import PocketBase from 'pocketbase';
 
-    const pb = new PocketBase('https://ai-finance.pockethost.io');
+  let record;
 
-    const records = pb.collection('transactions').getFullList({ sort: '-created',  });
+  const pb = new PocketBase('https://ai-finance.pockethost.io');
+
+  async function createTransaction() {
     
+    const data = {
+      "iban": "test",
+      "summary": "test",
+      "category": "test"
+    };
 
+	record = await pb.collection('transactions').create(data);
+
+  invalidateAll();
+	console.log(record);
+}
 </script>
 
-hello
+<button on:click={createTransaction}>Add test transaction</button>
 
-{#await records}
+{#await data.res}
   <span>Loading...</span>
-{:then data}
-  <pre>{JSON.stringify(data, null, 2)}</pre>
+{:then}
+  <pre>{JSON.stringify(data.res, null, 2)}</pre>
 {:catch error}
   <p style="color: red">{error.message}</p>
 {/await}
+
