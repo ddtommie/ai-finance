@@ -46,7 +46,8 @@
 
         <td><ul>
             <li>Got Pocketbase running on pockethost.io</li>
-            <li>...</li>
+            <li>List all transactions</li>
+            <li>Create new transaction and update data</li>
         </ul>
     </td>
     </tr>
