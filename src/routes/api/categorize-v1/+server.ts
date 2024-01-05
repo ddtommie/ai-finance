@@ -14,8 +14,8 @@ export const POST = (async ({ request }) => {
   // Request the OpenAI API for the response based on the prompt
   const response = await openai.chat.completions.create({
     //model: 'gpt-4',
-    model: 'gpt-4-1106-preview',
-    //model: 'gpt-3.5-turbo-1106',
+    //model: 'gpt-4-1106-preview',
+    model: 'gpt-3.5-turbo-1106',
     //model: 'gpt-3.5-turbo-0613',
     stream: true,
     // a precise prompt is important for the AI to reply with the correct tokens

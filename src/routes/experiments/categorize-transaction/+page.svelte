@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { useCompletion } from 'ai/svelte'
     import SvelteMarkdown from 'svelte-markdown'
     const { input, handleSubmit, completion, isLoading } = useCompletion({
@@ -51,6 +51,15 @@ $input = combineRandomStrings();
 
 import logo from '$lib/categorizing.jpg';
 
+import { tick } from 'svelte';
+/** @param {MouseEvent} event */
+async function handleFocus(event: { target: HTMLInputElement; }) {
+        await tick();
+        if (event.target) {
+          event.target.select();
+        }
+    }
+
 </script>
 
 <svelte:head>
@@ -67,18 +76,18 @@ import logo from '$lib/categorizing.jpg';
 
 <h1><a href="/">🔙</a> Categorize transaction(s)</h1>
 
-<div class="small">
-<SvelteMarkdown source={$completion} />
+
+<div class="small" >
+  <SvelteMarkdown source={$completion} />
 </div>
 
-<p>These are 3 random transactions (you can paste your own)</p>
 <form on:submit={handleSubmit}>
+  <p>These are 3 random transactions, but you can paste or type in your own!</p>
     <div class="flex-container">
-        <textarea bind:value={$input} rows="5" style="flex: 1" />
+        <textarea bind:value={$input} on:focus={handleFocus} rows="5" style="flex: 1" />
     </div>
     <div class="flex-container">
         <button disabled='{$isLoading}' type="submit">{#if ($isLoading)}Wait! I'm working 😅{:else}Categorize them! 😎{/if}</button>
         <button type="button" on:click={() => $input = combineRandomStrings()}>Gimme 3 new ones! 🔁</button>
     </div>
 </form>
-

@@ -25,6 +25,7 @@
 		"@vercel/speed-insights": "^1.0.2",
 		"ai": "^2.2.30",
 		"openai": "^4.24.1",
+		"pocketbase": "^0.20.1",
 		"svelte-markdown": "^0.4.1"
 	}
 }

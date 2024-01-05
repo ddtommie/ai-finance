@@ -40,4 +40,14 @@
         </ul>
     </td>
     </tr>
+    <tr>
+        <td>5-jan</td>
+        <td><a href="experiments/database">Write/read from a database</a></td>
+
+        <td><ul>
+            <li>Got Pocketbase running on pockethost.io</li>
+            <li>...</li>
+        </ul>
+    </td>
+    </tr>
 </table>
