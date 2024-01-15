@@ -1,3 +1,7 @@
+<script>
+    import '../styles.css';
+</script>
+
 <svelte:head>
   <title>Hello welcome to my AI playground!</title> 
 </svelte:head>
@@ -12,7 +16,7 @@
     </tr>
     <tr>
         <td>24-dec</td>
-        <td><a href="/">Working deployment on Vercel 🥳</a></td>
+        <td><a href="/" data-sveltekit-reload>Working deployment on Vercel 🥳</a></td>
         <td><ul>
             <li>Got <a href="https://learn.svelte.dev/tutorial/welcome-to-svelte">SvelteKit</a> up and running using <a href="https://stackblitz.com/">StackBlitz</a></li>
             <li>Made a <a href="https://github.com/ddtommie/ai-finance/tree/main">github repo</a> out of it</li>
@@ -23,7 +27,7 @@
     </tr>
     <tr>
         <td>27-dec</td>
-        <td><a href="experiments/random-chat">OpenAI API integration: Chat 💬</a></td>
+        <td><a data-sveltekit-reload href="experiments/random-chat">OpenAI API integration: Chat 💬</a></td>
         <td><ul>
             <li>Start a random chat conversation</li>
             <li>Used the <a href="https://sdk.vercel.ai/docs">Vercel AI SDK</a> to get up and running</li>
@@ -32,7 +36,7 @@
     </tr>
     <tr>
         <td>3-jan</td>
-        <td><a href="experiments/categorize-transaction">Categorize transactions</a></td>
+        <td><a data-sveltekit-reload href="experiments/categorize-transaction">Categorize transactions</a></td>
 
         <td><ul>
             <li>Got a working text completion prompt.</li>
@@ -42,12 +46,22 @@
     </tr>
     <tr>
         <td>5-jan</td>
-        <td><a href="experiments/database">Write/read from a database</a></td>
+        <td><a data-sveltekit-reload href="experiments/database">Write/read from a database</a></td>
 
         <td><ul>
             <li>Got Pocketbase running on pockethost.io</li>
             <li>List all transactions</li>
             <li>Create new transaction and update data</li>
+        </ul>
+    </td>
+    </tr>
+    <tr>
+        <td>10-jan</td>
+        <td><a href="experiments/categorize-with-options" data-sveltekit-reload>Categorize & pick GPT model</a></td>
+
+        <td><ul>
+            <li>Implemented model selector</li>
+            <li>Started using Tailwind css</li>
         </ul>
     </td>
     </tr>
