@@ -90,14 +90,14 @@ async function handleFocus(event: { target: HTMLInputElement; }) {
 
 
 <!-- main wrapper -->
-<div class="flex flex-col h-screen bg-teal-50">
+<div class="flex flex-col h-dvh bg-teal-50 md:p-16">
 
   <!-- gradient bovenkant -->
-  <div class="flex flex-grow flex-col max-h-[700px] p-4 rounded-bl-[32px] rounded-br-[32px]" style="background: linear-gradient(170deg, #535763 40.84%, #3DE9C0 59.52%, #FFF 67.83%, #3DE9C0 76.13%, #4B515F 92.74%)">
+  <div class="flex flex-grow flex-col max-h-[700px] p-4 rounded-bl-[32px] rounded-br-[32px] md:mx-36 md:rounded-[32px]" style="background: linear-gradient(170deg, #535763 40.84%, #3DE9C0 59.52%, #FFF 67.83%, #3DE9C0 76.13%, #4B515F 92.74%)">
   
     <a href="/" class="flex gap-4 mb-4 group">
       <div class="flex-none">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-200 group-hover:translate-x-1">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-7 h-7 text-gray-200 group-hover:translate-x-1">
           <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
         </svg>
       </div>  
