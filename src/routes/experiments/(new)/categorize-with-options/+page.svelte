@@ -94,13 +94,13 @@ async function handleFocus(event: { target: HTMLInputElement; }) {
   <!-- gradient bovenkant -->
   <div class="flex flex-grow flex-col max-h-[700px] p-4 rounded-bl-[32px] rounded-br-[32px] md:mx-36 md:rounded-[32px]" style="background: linear-gradient(170deg, #535763 40.84%, #3DE9C0 59.52%, #FFF 67.83%, #3DE9C0 76.13%, #4B515F 92.74%)">
   
-    <a href="/" class="flex gap-4 mb-4 group">
+    <a href="/" class="flex gap-2 mb-4 group">
       <div class="flex-none">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-7 h-7 text-gray-200 group-hover:translate-x-1">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-gray-200 transition-all duration-300 group-hover:-translate-x-1">
           <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
         </svg>
       </div>  
-      <div class="flex-1 text-gray-200 text-lg">Show all experiments</div>
+      <div class="flex-1 text-gray-200 text-md">Show all experiments</div>
     </a>
 
     <h1 class="flex text-5xl font-black text-teal-300 mb-6">Categorize transactions</h1>
