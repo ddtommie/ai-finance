@@ -88,7 +88,6 @@ async function handleFocus(event: { target: HTMLInputElement; }) {
 
 <form on:submit={handleSubmit}>
 
-
 <!-- main wrapper -->
 <div class="flex flex-col h-dvh bg-teal-50 md:p-16">
 
@@ -138,8 +137,8 @@ async function handleFocus(event: { target: HTMLInputElement; }) {
 
   <!-- buttons onderkant -->
   <div class="h-56">
-    <div class="flex flex-col mt-10 mx-12 items-center">
-      <button class="-mb-0 px-10 py-4 text-3xl font-medium bg-teal-300 rounded-2xl transition-transform duration-[2000ms] ease-out active:translate-y-3 active:duration-75" disabled='{$isLoading}' type="submit">{#if ($isLoading)}Wait! I'm working 😅{:else}Categorize them! 😎{/if}</button>
+    <div class="flex flex-col mt-10 items-center">
+      <button class="mb-0 px-8 py-4 text-3xl font-medium bg-teal-300 rounded-2xl transition-transform duration-[2000ms] ease-out active:translate-y-3 active:duration-75" disabled='{$isLoading}' type="submit">{#if ($isLoading)}Wait! I'm working 😅{:else}Categorize them! 😎{/if}</button>
       <div class="w-48 h-4 bg-slate-600 rounded-bl-2xl rounded-br-2xl"></div>
       <button class="m-6 px-6 py-2 bg-zinc-200 font-bold text-neutral-500 rounded-xl transition-transform ease-out active:translate-y-1 active:duration-75" type="button" on:click={() => $input = combineRandomStrings()}>Gimme 3 new ones! 🔁</button>
     </div>
