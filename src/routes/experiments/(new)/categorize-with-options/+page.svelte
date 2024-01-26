@@ -1,6 +1,6 @@
 <script lang="ts">
     import { useCompletion } from 'ai/svelte'
-    import SvelteMarkdown from 'svelte-markdown'
+    import JSONAutocomplete from 'json-autocomplete';
 
     // default LLM
     let myModel = "gpt-3.5-turbo-1106";
@@ -16,6 +16,20 @@
 	     completion = complete.completion;
 	     isLoading = complete.isLoading;
 	   }
+
+    let completionObject: any;
+
+     $: {
+        try {
+          
+          const json = JSONAutocomplete($completion);
+
+          completionObject = JSON.parse(json);
+
+        } catch (e) {
+          console.error("Error parsing JSON:", e);
+        }
+      }
 
 const strings = [
 'Jumbo Scheveningen SGRAVENHAGE',
@@ -89,10 +103,10 @@ async function handleFocus(event: { target: HTMLInputElement; }) {
 <form on:submit={handleSubmit}>
 
 <!-- main wrapper -->
-<div class="flex flex-col h-dvh bg-teal-50 md:p-16">
+<div class="flex flex-col h-dvh bg-teal-50 md:py-16 md:items-center font-poppins">
 
   <!-- gradient bovenkant -->
-  <div class="flex flex-grow flex-col max-h-[700px] p-4 rounded-bl-[32px] rounded-br-[32px] md:mx-36 md:rounded-[32px]" style="background: linear-gradient(170deg, #535763 40.84%, #3DE9C0 59.52%, #FFF 67.83%, #3DE9C0 76.13%, #4B515F 92.74%)">
+  <div class="flex flex-grow flex-col max-h-[700px] md:max-w-[600px] p-4 rounded-bl-[40px] rounded-br-[40px] md:mx-36 md:rounded-[40px]" style="background: linear-gradient(170deg, #535763 40.84%, #3DE9C0 59.52%, #FFF 67.83%, #3DE9C0 76.13%, #4B515F 92.74%)">
   
     <a href="/" class="flex gap-2 mb-4 group">
       <div class="flex-none">
@@ -106,21 +120,39 @@ async function handleFocus(event: { target: HTMLInputElement; }) {
     <h1 class="flex text-5xl font-black text-teal-300 mb-6">Categorize transactions</h1>
   
     <label class="flex px-4 py-3 bg-neutral-200 rounded-tl-[32px] rounded-tr-[32px] text-sm font-medium" for="prompt">Paste or type your own transactions:</label>
-    <div class="flex px-4 pb-4 bg-neutral-200">
+    <div class="flex px-4 pb-4 bg-neutral-200 mix-blend-screen">
       <textarea class="flex w-full bg-neutral-200 text-xs selection:bg-teal-300 caret-teal-300 font-mono whitespace-pre overflow-hidden focus:overflow-x-scroll" id="prompt" bind:value={$input} on:focus={handleFocus} rows="3" />
     </div>
     
     <!-- output container with select at the bottom -->
-    <div class="flex-grow px-4 max-h-80 overflow-y-auto bg-neutral-200 text-sm font-medium">
+    <div class="flex-grow px-4 max-h-80 overflow-y-auto  text-sm font-medium relative">
       
-        <SvelteMarkdown source={$completion} />
+        <!-- <p>{$completion}</p>
        
+        <pre>{JSON.stringify(completionObject, null, 2)}</pre> -->
+
+
+        <!-- Iterate over transactions and create paragraphs -->
+        <div class="relative z-10">
+        {#if completionObject && completionObject.transactions}
+        {#each completionObject.transactions as transaction (transaction.summary)}
+        <div class="flex flex-row">
+          <div class="flex font-medium text-base"> {transaction.summary ?? ''}</div>
+          <div class="flex ml-1 font-[600] text-emerald-700 text-base"> - {transaction.category ?? ''}</div>
+        </div>  
+        <p class="text-xs font-light text-gray-600 mb-3">{transaction.explanation ?? ''}</p>  
+  
+        {/each}
+        {/if}
+      </div>
+        
+        <div class="absolute top-0 left-0 right-0 bottom-0 mix-blend-screen bg-neutral-200"></div>
     </div>
   
-    <div class="flex flex-shrink px-4 pb-4 w-full bg-neutral-200 rounded-bl-[32px] rounded-br-[32px]">
+    <div class="flex flex-shrink px-4 pb-4 w-full bg-neutral-200 rounded-bl-[32px] rounded-br-[32px] mix-blend-screen">
       <label class="hidden" for="model">GPT model</label>
 
-      <select class="flex flex-shrink p-4 w-full bg-[#A1DDFF] border-r-8 pr-8 border-transparent rounded-[32px]" id="model" bind:value={myModel} autocomplete="off">
+      <select class="flex flex-shrink p-4 w-full bg-[#A1DDFF] font-bold border-r-8 pr-8 border-transparent rounded-[32px] mix-blend-normal" id="model" bind:value={myModel} autocomplete="off">
         <!-- <option value="gpt-4-1106-preview">GPT-4-1106-preview - Faster, cheapter & better (1 ct / 1k tokens)</option>
         <option value="gpt-4">GPT-4 - Slow but good & expensive (3 ct / 1k tokens))</option>
         <option value="gpt-3.5-turbo-1106">GPT-3.5-Turbo-1106 - Very cheap, mucho less good (0,1 ct / 1k tokens)</option> -->
@@ -138,9 +170,9 @@ async function handleFocus(event: { target: HTMLInputElement; }) {
   <!-- buttons onderkant -->
   <div class="h-56">
     <div class="flex flex-col mt-10 items-center">
-      <button class="mb-0 px-8 py-4 text-3xl font-medium bg-teal-300 rounded-2xl transition-transform duration-[2000ms] ease-out active:translate-y-3 active:duration-75" disabled='{$isLoading}' type="submit">{#if ($isLoading)}Wait! I'm working 😅{:else}Categorize them! 😎{/if}</button>
+      <button class="mb-0 px-8 py-4 text-3xl font-[600] bg-teal-300 rounded-2xl transition-transform duration-[2000ms] ease-out active:translate-y-3 active:duration-75" disabled='{$isLoading}' type="submit">{#if ($isLoading)}Wait! I'm working 😅{:else}Categorize them! 😎{/if}</button>
       <div class="w-48 h-4 bg-slate-600 rounded-bl-2xl rounded-br-2xl"></div>
-      <button class="m-6 px-6 py-2 bg-zinc-200 font-bold text-neutral-500 rounded-xl transition-transform ease-out active:translate-y-1 active:duration-75" type="button" on:click={() => $input = combineRandomStrings()}>Gimme 3 new ones! 🔁</button>
+      <button class="m-6 px-6 py-2 bg-zinc-200 font-medium text-neutral-500 rounded-xl transition-transform ease-out active:translate-y-1 active:duration-75" type="button" on:click={() => $input = combineRandomStrings()}>Gimme 3 new ones! 🔁</button>
     </div>
     
     

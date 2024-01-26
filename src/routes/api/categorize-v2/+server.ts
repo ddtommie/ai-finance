@@ -20,14 +20,13 @@ export const POST = (async ({ request }) => {
       {
         role: 'user',
         content: `Can you categorize these payment transactions only to one of the listed categories
-        and make a table out of it with the columns titled:
-        "Summary" (a summary of the transaction in 1 or 2 words, most often this is the merchant name. Try to use normal sentence casing, remove things like BV or NV from merchant names),
-        "Category" (the category you picked), 
-        "Explanation" (a short explanation why you picked this using a reference from the payment?) 
+        and create a json response returning an array of objects using the following fields:
+        "summary": a summary of the transaction in 1 or 2 words, most often this is the merchant name. Try to use normal sentence casing, remove things like BV or NV from merchant names)
+        "category": the category you picked
+        "explanation": a short explanation why you picked this category for this
         
         Additional requirements:
         - If you can, rather pick a category than chosing the category "other"
-        - Don't add text above or below the table.
 
         The categories are:
         Living (this is about your house, mortgage, rent)
@@ -63,7 +62,7 @@ export const POST = (async ({ request }) => {
         ${prompt}`
       },
     ],
-    //response_format: { type: "json_object" },
+    response_format: { type: "json_object" },
     max_tokens: 2000,
     temperature: 0.5, // kinda certain
     top_p: 1,
