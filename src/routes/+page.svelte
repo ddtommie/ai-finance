@@ -56,12 +56,13 @@
     </td>
     </tr>
     <tr>
-        <td>10-jan</td>
+        <td>10-jan - 26-jan</td>
         <td><a href="experiments/categorize-with-options" data-sveltekit-reload>Categorize & pick GPT model</a></td>
 
         <td><ul>
             <li>Implemented model selector</li>
             <li>Started using Tailwind css</li>
+            <li>GPT returning JSON</li>
         </ul>
     </td>
     </tr>
