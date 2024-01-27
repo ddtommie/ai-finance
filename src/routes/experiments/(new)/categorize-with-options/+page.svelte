@@ -106,7 +106,7 @@ async function handleFocus(event: { target: HTMLInputElement; }) {
 <div class="flex flex-col h-dvh bg-teal-50 md:py-16 md:items-center font-poppins">
 
   <!-- gradient bovenkant -->
-  <div class="flex flex-grow flex-col max-h-[700px] md:max-w-[600px] p-4 rounded-bl-[40px] rounded-br-[40px] md:mx-36 md:rounded-[40px]" style="background: linear-gradient(170deg, #535763 40.84%, #3DE9C0 59.52%, #FFF 67.83%, #3DE9C0 76.13%, #4B515F 92.74%)">
+  <div class="flex flex-grow flex-col max-h-[700px] md:w-[700px] p-4 rounded-bl-[40px] rounded-br-[40px] md:mx-36 md:rounded-[40px]" style="background: linear-gradient(170deg, #535763 40.84%, #3DE9C0 59.52%, #FFF 67.83%, #3DE9C0 76.13%, #4B515F 92.74%)">
   
     <a href="/" class="flex gap-2 mb-4 group">
       <div class="flex-none">
@@ -119,7 +119,7 @@ async function handleFocus(event: { target: HTMLInputElement; }) {
 
     <h1 class="flex text-5xl font-black text-teal-300 mb-6">Categorize transactions</h1>
   
-    <label class="flex px-4 py-3 bg-neutral-200 rounded-tl-[32px] rounded-tr-[32px] text-sm font-medium" for="prompt">Paste or type your own transactions:</label>
+    <label class="flex px-4 py-3 bg-neutral-200 rounded-tl-[32px] rounded-tr-[32px] text-sm font-medium mix-blend-screen" for="prompt">Paste or type your own transactions:</label>
     <div class="flex px-4 pb-4 bg-neutral-200 mix-blend-screen">
       <textarea class="flex w-full bg-neutral-200 text-xs selection:bg-teal-300 caret-teal-300 font-mono whitespace-pre overflow-hidden focus:overflow-x-scroll" id="prompt" bind:value={$input} on:focus={handleFocus} rows="3" />
     </div>
@@ -153,12 +153,11 @@ async function handleFocus(event: { target: HTMLInputElement; }) {
       <label class="hidden" for="model">GPT model</label>
 
       <select class="flex flex-shrink p-4 w-full bg-[#A1DDFF] font-bold border-r-8 pr-8 border-transparent rounded-[32px] mix-blend-normal" id="model" bind:value={myModel} autocomplete="off">
-        <!-- <option value="gpt-4-1106-preview">GPT-4-1106-preview - Faster, cheapter & better (1 ct / 1k tokens)</option>
-        <option value="gpt-4">GPT-4 - Slow but good & expensive (3 ct / 1k tokens))</option>
-        <option value="gpt-3.5-turbo-1106">GPT-3.5-Turbo-1106 - Very cheap, mucho less good (0,1 ct / 1k tokens)</option> -->
+        
+        <option value="gpt-4-0125-preview">GPT-4 Turbo (newest)</option>
         <option value="gpt-4-1106-preview">GPT-4-1106-preview</option>
-        <option value="gpt-4">GPT-4</option>
-        <option value="gpt-3.5-turbo-1106">GPT-3.5-Turbo-1106</option>
+        <option value="gpt-3.5-turbo-1106">GPT-3.5 Turbo 1106</option>
+        <!-- <option value="gpt-3.5-turbo-0613">GPT-3.5 Turbo 0613</option> -->
       </select>
     </div>
     <!-- einde output container -->
