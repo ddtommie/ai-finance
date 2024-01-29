@@ -7,6 +7,12 @@ const openai = new OpenAI({
     apiKey: API_KEY || '',
   });
  
+export const config = {
+    runtime: 'edge',
+}
+
+//export const runtime = 'edge'
+
 export const POST = (async ({ request }) => {  
   // Extract the `prompt` from the body of the request
   const { prompt, model } = await request.json();
