@@ -154,7 +154,9 @@ async function handleFocus(event: { target: HTMLInputElement; }) {
 
       <select class="flex flex-shrink p-4 w-full bg-[#A1DDFF] font-bold border-r-8 pr-8 border-transparent rounded-[32px] mix-blend-normal" id="model" bind:value={myModel} autocomplete="off">
         
-        <option value="gpt-4-0125-preview">GPT-4 Turbo (newest)</option>
+        
+        <option value="gpt-4o">GPT-4o (newest)</option>
+        <option value="gpt-4-0125-preview">GPT-4 Turbo</option>
         <option value="gpt-4-1106-preview">GPT-4-1106-preview</option>
         <option value="gpt-3.5-turbo-1106">GPT-3.5 Turbo 1106</option>
         <!-- <option value="gpt-3.5-turbo-0613">GPT-3.5 Turbo 0613</option> -->
